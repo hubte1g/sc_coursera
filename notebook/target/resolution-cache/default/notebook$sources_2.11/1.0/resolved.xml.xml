@@ -4,7 +4,7 @@
 		module="notebook$sources_2.11"
 		revision="1.0"
 		status="integration"
-		publication="20160723153704"
+		publication="20160723234916"
 	/>
 	<configurations>
 		<conf name="compile" visibility="public" description=""/>

@@ -4,7 +4,7 @@
 		module="notebook-build"
 		revision="0.1-SNAPSHOT"
 		status="integration"
-		publication="20160723153657"
+		publication="20160723235144"
 		e:sbtVersion="0.13" e:scalaVersion="2.10"
 	>
 		<description>

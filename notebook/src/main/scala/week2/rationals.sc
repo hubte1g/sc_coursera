@@ -6,9 +6,30 @@ object rationals {
   // ? Must place members outside of object/class to run in worksheet
 }
 
-class Rational(x: Int, y: Int) {
-  def numer = x
-  def denom = y
+class Rational(x: Int, y: Int) {  // 'initialization code'
+  /** private gcd() and g so that clients of class Rational() cannot see gcd as it is
+    * for implementation purposes only
+    * Can only be accessed from inside the Rational() class
+    * DATA ABSTRACTION
+    */
+  private def gcd(a: Int, b: Int): Int = if (b == 0) a else gcd(b, a % b)
+  private val g = gcd(x,y)  // calculate gcd immediately so that its val can be reused in the calcs of numer and denom
+  // def numer = x
+  // def denom = y
+  def numer = x / g
+  def denom = y / g
+
+  def less(that: Rational) = numer * that.denom < that.numer * denom
+  // Note that a simple name x, which refers to another member of the class,
+  //  is an abbreviation of this.x -- an equivalent would be:
+  //   def less(that: Rational) = this.numer * that.denom < that.numer * this.denom
+
+  /* if current rational number (this) < other rational number (that) then (that) otherwise current (this)
+   * Note: fp can can use 'this' or 'self' // refers to rational number as whole
+   *  On the inside of a class, the name 'this' represents the object on
+   *  which the current method is executed
+   */
+  def max(that: Rational) = if (this.less(that)) that else this
 
   def add(that: Rational) =
     new Rational(
@@ -47,3 +68,12 @@ x.add(y)
 
 x.neg
 x.sub(y).sub(z)
+
+// LECTURE 2.6
+y.add(y)  //  must still simplify rational number  // works after gcd() add to Rational()
+
+x.less(y) // true
+x.max(y) // gives max
+
+
+
