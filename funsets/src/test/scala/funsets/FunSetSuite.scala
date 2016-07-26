@@ -77,6 +77,8 @@ class FunSetSuite extends FunSuite {
     val s1 = singletonSet(1)
     val s2 = singletonSet(2)
     val s3 = singletonSet(3)
+
+    val s99 = singletonSet(99)
   }
 
   /**
@@ -110,7 +112,37 @@ class FunSetSuite extends FunSuite {
     }
   }
 
+  test("difference") {
+    new TestSets {
+      val s = diff(s1, s2)
+      assert(contains(s, 1), "Diff 1")
+      assert(!contains(s, 2), "Diff 2")
+      assert(!contains(s, 99), "Diff 99")
+    }
+  }
 
+  test("forall predicate") {
+    new TestSets {
+      val s = union(union(s1, s2), union(s3, s99))
 
+      //assert(forall(s, (_ < 4)), "Forall test")
+      //assert(!forall(s, (_ < 2)), "Not forall test")
+      assert(forall(s1, s1))
+      assert(!forall(s1, s2))
+    }
+  }
+
+  test("map works") {
+    new TestSets {
+      val s = union(union(s1, s2), s3)
+      val mapped = map(s, (_ * 2))
+
+      assert( contains(mapped, 2), "map 2")
+      assert( contains(mapped, 4), "map 4")
+      assert( contains(mapped, 6), "map 6")
+
+      assert( !contains(mapped, 3), "map 3")
+    }
+  }
 
 }

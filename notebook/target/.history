@@ -1,3 +1,11 @@
 set scalacOptions += "-feature"
 test
 run
+run-main progscala2.rounding.TryCatch foo/bar \
+run-main progscala2.rounding.TryCatch foo/bar 
+run-main progscala2.rounding.TryCatch
+ls
+run-main progscala2.rounding.TryCatch C:\projects\IdeaProjects\sc_coursera\ref\courser-scala\w2-funsets\src\main\scala\funsets\FunSets
+run-main progscala2.rounding.TryCatch C:\projects\IdeaProjects\sc_coursera\ref\courser-scala\w2-funsets\src\main\scala\funsets\FunSets.scala
+run-main progscala2.rounding.TryCatch C:\pictures\mandelbrot
+run-main progscala2.rounding.TryCatch C:\pictures\mandelbrot.jpg
