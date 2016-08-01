@@ -12,6 +12,12 @@ class Rational(x: Int, y: Int) {  // 'initialization code'
     * Can only be accessed from inside the Rational() class
     * DATA ABSTRACTION
     */
+  // preconditions
+  require(y != 0, "denominator must be nonzero")
+  require(y > 0, "denominator must be positive")
+
+  def this(x: Int) = this(x, 1)  // secondary constructor // new Rational(2)
+
   private def gcd(a: Int, b: Int): Int = if (b == 0) a else gcd(b, a % b)
   private val g = gcd(x,y)  // calculate gcd immediately so that its val can be reused in the calcs of numer and denom
   // def numer = x
@@ -29,6 +35,7 @@ class Rational(x: Int, y: Int) {  // 'initialization code'
    *  On the inside of a class, the name 'this' represents the object on
    *  which the current method is executed
    */
+  // `this` represents the object on which the current method is executed
   def max(that: Rational) = if (this.less(that)) that else this
 
   def add(that: Rational) =
@@ -75,5 +82,10 @@ y.add(y)  //  must still simplify rational number  // works after gcd() add to R
 x.less(y) // true
 x.max(y) // gives max
 
+val strange = new Rational (1, 9)  // must make exception with require()
+//strange.add(strange)// add `strange` to itself
 
+new Rational(90)
+
+1+1
 
