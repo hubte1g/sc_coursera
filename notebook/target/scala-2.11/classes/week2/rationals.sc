@@ -14,7 +14,7 @@ class Rational(x: Int, y: Int) {  // 'initialization code'
     */
   // preconditions
   require(y != 0, "denominator must be nonzero")
-  require(y > 0, "denominator must be positive")
+  //require(y > 0, "denominator must be positive")
 
   def this(x: Int) = this(x, 1)  // secondary constructor // new Rational(2)
 
@@ -86,6 +86,4 @@ val strange = new Rational (1, 9)  // must make exception with require()
 //strange.add(strange)// add `strange` to itself
 
 new Rational(90)
-
-1+1
 
