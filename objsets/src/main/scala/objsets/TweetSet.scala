@@ -141,7 +141,8 @@ class NonEmpty(elem: Tweet, left: TweetSet, right: TweetSet) extends TweetSet {
   }
 
   def union(that: TweetSet): TweetSet = {
-    ((left union right) union that) incl elem
+    //((left union right) union that) incl elem
+    (left union (right union that)) incl elem  // complexity goes from O(n^2 * log(n)^2) to O(n * log(n)))
   }
 
   def empty: Boolean = false
